@@ -4,6 +4,10 @@ import * as XLSX from 'xlsx';
 const RouteTable = (props) => {
       
     const exportToCSV = () => {
+        if(Array.isArray(props.routes) && !props.routes.length){
+            alert("Cannot export since no routes are available");
+            return;
+        }
         let newArray = props.routes.map(a => ({...a}));
         newArray.forEach((obj) => {
             obj.stops.forEach((stop, i) => {

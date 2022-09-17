@@ -98,6 +98,9 @@ const App = () => {
                 </div>
             </div>
             <Map polyline={polyline}/>
+            <span style={{"fontSize": "12px"}}>Disclaimer - The map shown in the website is only for the Assignment purpose of Chalo and shouldn't be shared
+                online without consent of the creator as the boundaries of India needs to be corrected accordingly before posting.
+            </span>
         </div>
     );
 }
