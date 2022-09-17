@@ -6,7 +6,7 @@ import {
 import 'leaflet/dist/leaflet.css';
 
 
-export const Map = (props) => {
+const Map = (props) => {
   const position = [20.5937, 78.9629]; // India position
   const customMarkerUserPos = new L.Icon({
     iconUrl: "https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png",
@@ -55,3 +55,5 @@ export const Map = (props) => {
     </div>
   );
 };
+
+export default Map;

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import RouteTable from './components/ViewRoute';
 import AddRouteForm from './components/AddRoute';
 import EditRouteForm from './components/EditRoute';
-import { Map } from './components/Map';
+import Map from './components/Map';
 import './App.css';
 
 const App = () => {
@@ -11,7 +11,7 @@ const App = () => {
         {id: 1, label: 'Bengaluru', value: 'bengaluru', lat: 12.9716, lng: 77.5946},
         {id: 2, label: 'Mumbai', value: 'mumbai', lat: 19.0760, lng: 72.8777},
         {id: 3, label: 'Delhi', value: 'delhi', lat: 28.7041, lng: 77.1025},
-        {id: 4, label: 'Kolkata', value: 'kolkatta', lat: 22.5726, lng: 88.3639},
+        {id: 4, label: 'Kolkata', value: 'kolkata', lat: 22.5726, lng: 88.3639},
         {id: 5, label: 'Hyderabad', value: 'hyderabad', lat: 17.3850, lng: 78.4867},
     ];
 
@@ -47,15 +47,6 @@ const App = () => {
                         })
     };
 
-    const mapView = (route) => {
-        setPolyline([])
-        setShowRoute(!showRoute);
-        if(!showRoute)
-            route.stops.forEach(stop => {
-                setPolyline(polyline => [...polyline, [stop.lat, stop.lng, stop.routeOrder]]);
-            });
-    };
-
     const deleteRoute = id => {
         localStorage.setItem("routes", JSON.stringify(routesData.filter(route => route.id !== id)));
         setRoutesData(JSON.parse(localStorage.getItem("routes") || "[]"))
@@ -66,6 +57,16 @@ const App = () => {
         localStorage.setItem("routes", JSON.stringify(routesData.map(route => (route.id === id ? updatedRoute : route))))
         setRoutesData(JSON.parse(localStorage.getItem("routes") || "[]"))
     }
+
+    const mapView = (route) => {
+        setPolyline([])
+        setShowRoute(!showRoute);
+        if(!showRoute)
+            route.stops.forEach(stop => {
+                setPolyline(polyline => [...polyline, [stop.lat, stop.lng, stop.routeOrder]]);
+            });
+    };
+    
     return (
         <div className="container">
             <h1>Chalo Assignment</h1>
