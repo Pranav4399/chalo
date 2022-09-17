@@ -53,7 +53,7 @@ const RouteTable = (props) => {
                         </button>
                         <button className="button" onClick={() => {
                             props.mapView(route)
-                        }}>{props.showRoute ? 'Remove from Map' : 'View in Map'}</button>
+                        }}>View/Remove in Map</button>
                     </td>
                 </tr>
             ))

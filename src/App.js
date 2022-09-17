@@ -54,6 +54,8 @@ const App = () => {
 
     const updateRoute = (id, updatedRoute) => {
         setEditing(false)
+        setPolyline([]);
+        setShowRoute(!showRoute);
         localStorage.setItem("routes", JSON.stringify(routesData.map(route => (route.id === id ? updatedRoute : route))))
         setRoutesData(JSON.parse(localStorage.getItem("routes") || "[]"))
     }
