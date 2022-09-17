@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import RouteTable from './components/ViewRoute';
 import AddRouteForm from './components/AddRoute';
 import EditRouteForm from './components/EditRoute';
-import { Map } from './Map';
+import { Map } from './components/Map';
 import './App.css';
 
 const App = () => {

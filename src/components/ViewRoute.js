@@ -1,7 +1,24 @@
-import React from 'react'
+import React from 'react';
+import * as XLSX from 'xlsx'; 
 
-const RouteTable = (props) => (
-    <>
+const RouteTable = (props) => {
+      
+    const exportToCSV = () => {
+        let newArray = props.routes.map(a => ({...a}));
+        newArray.forEach((obj) => {
+            obj.stops.forEach((stop, i) => {
+                obj['stop-'+i] =  stop.label
+            });
+            delete obj['stops']; 
+        });
+
+        const worksheet = XLSX.utils.json_to_sheet(newArray);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+        XLSX.writeFile(workbook, "Routes.xlsx");
+    }
+
+    return <>
     <table>
         <thead>
         <tr>
@@ -43,8 +60,8 @@ const RouteTable = (props) => (
         )}
         </tbody>
     </table>
-    <button>Export Routes</button>
+    <button onClick={exportToCSV}>Export Routes</button>
     </>
-);
+};
 
 export default RouteTable

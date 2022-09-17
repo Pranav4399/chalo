@@ -8,7 +8,7 @@ import 'leaflet/dist/leaflet.css';
 
 export const Map = (props) => {
   const position = [20.5937, 78.9629]; // India position
-  const customMarkerStopPos = new L.Icon({
+  const customMarkerUserPos = new L.Icon({
     iconUrl: "https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png",
     iconSize: [15, 20],
     iconAnchor: [5, 20],
@@ -42,7 +42,7 @@ export const Map = (props) => {
         />
         <FeatureGroup>
           {props.polyline?.map((mark, i) => (
-            <Marker key={i} position={mark} icon={customMarkerStopPos}>
+            <Marker key={i} position={mark} icon={customMarkerUserPos}>
               <Popup >
                 Stop {mark[2]}
               </Popup>
